@@ -81,6 +81,8 @@ The web panel ships in English and German. English is the source of truth.
 2. Merging that PR is the release: Git tag, GitHub release, artifacts.
 3. Release PRs are opened by the Harrier release bot (a GitHub App), so the normal checks run on them, too.
 
+Dependency updates come from Dependabot once a week as grouped PRs (`chore(deps): …`). All GitHub Actions are pinned to commit SHAs; Dependabot updates the pins.
+
 Release branches (`release/1.x`) only appear once older versions still need fixes.
 
 ## Changes across repositories

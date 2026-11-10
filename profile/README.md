@@ -1,12 +1,12 @@
 # Harrier
 
-Selbst gehosteter Game-Server-Manager für Homelabs und Freundesgruppen: einfach zu installieren, kennt die Spiele, und Server schlafen, solange niemand spielt.
+Self-hosted game server manager for homelabs and groups of friends: easy to install, aware of the games it runs, and servers sleep while nobody is playing.
 
-> Status: früh in der Entwicklung (Meilenstein M0). Noch nicht benutzbar.
+> Status: early development (milestone M0). Not usable yet.
 
-| Repo | Inhalt |
+| Repository | Contents |
 |---|---|
-| [backend](https://github.com/harrier-gg/backend) | NestJS-Microservices (Gateway, Servers, …) |
-| [web](https://github.com/harrier-gg/web) | Panel-Frontend (React + Vite) |
-| [agent](https://github.com/harrier-gg/agent) | Agent und CLI in Rust |
-| [.github](https://github.com/harrier-gg/.github) | Gemeinsames: [Mitmachen](https://github.com/harrier-gg/.github/blob/main/CONTRIBUTING.md), Architekturentscheidungen (ADRs) |
+| [backend](https://github.com/harrier-gg/backend) | NestJS microservices (gateway, servers, …) |
+| [web](https://github.com/harrier-gg/web) | Panel frontend (React + Vite), English and German |
+| [agent](https://github.com/harrier-gg/agent) | Agent and CLI in Rust |
+| [.github](https://github.com/harrier-gg/.github) | Shared files: [contributing guide](https://github.com/harrier-gg/.github/blob/main/CONTRIBUTING.md), architecture decisions (ADRs) |

@@ -1,0 +1,80 @@
+# Shared pull request checks for every Harrier repository.
+# Repositories call this workflow from their own `pr.yml`; the resulting required checks are
+# "pr / title" and "pr / template" (see scripts/setup-repo.sh).
+name: PR checks
+
+on:
+  workflow_call:
+
+permissions:
+  pull-requests: read
+
+jobs:
+  # We squash-merge, so the PR title becomes the commit on main and, through release-please,
+  # the changelog entry and the version bump. It must follow Conventional Commits.
+  title:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@2252a14e810aa9b85c2d560bd7070c802206ecf6 # v6.1.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            perf
+            refactor
+            docs
+            test
+            build
+            ci
+            chore
+            revert
+
+  # Every PR must fill in the pull request template (see pull_request_template.md).
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR description
+        # Release PRs (release-please) and dependency updates (Dependabot) are generated and have
+        # their own format. Release PRs are only skipped for branches in this repository, so a fork
+        # cannot dodge the check by naming its branch alike; the Dependabot login cannot be taken.
+        if: >-
+          ${{ !(startsWith(github.head_ref, 'release-please--') && github.event.pull_request.head.repo.full_name == github.repository)
+          && github.event.pull_request.user.login != 'dependabot[bot]' }}
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const body = context.payload.pull_request.body ?? '';
+            const clean = (s) => s.replace(/<!--[\s\S]*?-->/g, '').trim();
+
+            // Split into "## Heading" sections.
+            const sections = {};
+            for (const part of body.split(/^## /m).slice(1)) {
+              const [heading, ...rest] = part.split('\n');
+              sections[heading.trim().toLowerCase()] = clean(rest.join('\n'));
+            }
+
+            const problems = [];
+            for (const name of ['Type', 'Summary', 'How was this tested?']) {
+              if (!(name.toLowerCase() in sections)) problems.push(`Section "## ${name}" is missing. Please use the PR template.`);
+            }
+
+            const ticked = (sections.type ?? '').match(/^- \[[xX]\] .+$/gm) ?? [];
+            if (ticked.length !== 1) problems.push(`Tick exactly one box under "## Type" (found ${ticked.length}).`);
+            if ('summary' in sections && !sections.summary) problems.push('"## Summary" is empty.');
+            if ('how was this tested?' in sections && !sections['how was this tested?']) {
+              problems.push('"## How was this tested?" is empty.');
+            }
+
+            const isBugFix = ticked.some((line) => /bug fix/i.test(line));
+            const issue = sections['related issue'] ?? '';
+            if (isBugFix && !/#\d+|https?:\/\/\S+/.test(issue)) {
+              problems.push('Bug fixes need a linked issue under "## Related issue" (e.g. "Closes #123").');
+            }
+
+            if (problems.length) {
+              core.setFailed(`The PR description does not follow the template:\n- ${problems.join('\n- ')}`);
+            } else {
+              core.info('PR description follows the template.');
+            }

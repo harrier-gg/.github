@@ -9,4 +9,4 @@ Selbst gehosteter Game-Server-Manager für Homelabs und Freundesgruppen: einfach
 | [backend](https://github.com/harrier-gg/backend) | NestJS-Microservices (Gateway, Servers, …) |
 | [web](https://github.com/harrier-gg/web) | Panel-Frontend (React + Vite) |
 | [agent](https://github.com/harrier-gg/agent) | Agent und CLI in Rust |
-| [.github](https://github.com/harrier-gg/.github) | Gemeinsames, Architekturentscheidungen (ADRs) |
+| [.github](https://github.com/harrier-gg/.github) | Gemeinsames: [Mitmachen](https://github.com/harrier-gg/.github/blob/main/CONTRIBUTING.md), Architekturentscheidungen (ADRs) |

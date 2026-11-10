@@ -11,9 +11,11 @@ gh api -X PATCH "repos/$repo" \
   -f squash_merge_commit_title=PR_TITLE -f squash_merge_commit_message=PR_BODY \
   -F delete_branch_on_merge=true -F allow_auto_merge=true >/dev/null
 
-# release-please darf Release-PRs anlegen
+# release-please darf Release-PRs anlegen. Geht nur, wenn die Org es erlaubt:
+# Org-Settings → Actions → General → „Allow GitHub Actions to create and approve pull requests“.
 gh api -X PUT "repos/$repo/actions/permissions/workflow" \
-  -f default_workflow_permissions=read -F can_approve_pull_request_reviews=true >/dev/null
+  -f default_workflow_permissions=read -F can_approve_pull_request_reviews=true >/dev/null \
+  || echo "⚠ $repo: Actions dürfen noch keine PRs anlegen – erst in den Org-Settings erlauben, dann Skript erneut ausführen" >&2
 
 # Regel für main als JSON. Ohne Pflicht-Checks (z. B. für .github: checks="") entfällt die Status-Regel.
 ruleset=$(python3 - "$checks" <<'PY'

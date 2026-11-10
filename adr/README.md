@@ -1,9 +1,10 @@
 # Architecture Decision Records
 
-Eine Seite pro Entscheidung, die zwischen Repos oder Services wirkt und später teuer zu ändern ist.
-Neue ADR: `template.md` kopieren, nächste Nummer, Status „Vorgeschlagen“, per PR.
+One page per decision that affects more than one repository or service and is expensive to change later.
+New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 
-| Nr. | Titel | Status |
+| No. | Title | Status |
 |---|---|---|
-| [0001](0001-repo-aufteilung.md) | Repo-Aufteilung und Verträge | Angenommen |
-| [0002](0002-agent-protokoll-versionierung.md) | Versionierung des Agent-Protokolls | Angenommen |
+| [0001](0001-repository-layout.md) | Repository layout and contracts | Accepted |
+| [0002](0002-agent-protocol-versioning.md) | Agent protocol versioning | Accepted |
+| [0003](0003-internationalization.md) | Internationalization | Accepted |

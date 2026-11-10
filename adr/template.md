@@ -1,13 +1,16 @@
-# NNNN: Titel
+# NNNN: Title
 
-- **Status:** Vorgeschlagen | Angenommen | Ersetzt durch NNNN
-- **Datum:** JJJJ-MM-TT
+- **Status:** Proposed | Accepted | Superseded by NNNN
+- **Date:** YYYY-MM-DD
 
-## Kontext
-Welches Problem, welche Rahmenbedingungen?
+## Context
 
-## Entscheidung
-Was wir tun.
+What is the problem, and what are the constraints?
 
-## Konsequenzen
-Was dadurch leichter wird, was schwerer, was wir in Kauf nehmen.
+## Decision
+
+What we do.
+
+## Consequences
+
+What becomes easier, what becomes harder, what we accept.

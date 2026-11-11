@@ -17,3 +17,4 @@ New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 | [0010](0010-crash-restart.md) | Restarting crashed servers | Accepted |
 | [0011](0011-config-files.md) | Editing config files | Accepted |
 | [0012](0012-version-providers.md) | Version providers | Accepted |
+| [0013](0013-sleep-and-wake.md) | Sleep and wake | Accepted |

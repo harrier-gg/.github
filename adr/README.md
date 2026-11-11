@@ -19,3 +19,4 @@ New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 | [0012](0012-version-providers.md) | Version providers | Accepted |
 | [0013](0013-sleep-and-wake.md) | Sleep and wake | Accepted |
 | [0014](0014-discord-bot.md) | Discord bot | Accepted |
+| [0015](0015-file-manager.md) | File manager | Accepted |

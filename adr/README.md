@@ -12,3 +12,4 @@ New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 | [0005](0005-games-variants-and-providers.md) | Games, variants and providers | Accepted |
 | [0006](0006-users-login-and-sessions.md) | Users, login and sessions | Accepted |
 | [0007](0007-roles-and-invitations.md) | Roles and invitations | Accepted |
+| [0008](0008-discord-login.md) | Discord login | Accepted |

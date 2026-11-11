@@ -15,7 +15,7 @@ M3 started with game settings as form fields (game mode, difficulty, PvP …) th
 
 - **Template fields are for installation and resources** (version, memory). Game settings stay in the game's own files, which the running version writes, so they always match it.
 - **A template lists the files that can be edited**, e.g. `files: [{ path: server.properties }]`. The panel shows a text editor for each of them (admins and owners).
-- **The agent reads and writes files on request**, only inside the server's data directory: relative paths without `..`, no symlinks, regular files up to 128 KiB (one agent message), UTF-8 text. The servers service only asks for paths the template lists; the agent checks containment on its own, so a compromised panel still cannot reach other files.
+- **The agent reads and writes files on request**, only inside the server's data directory: relative paths without `..`, opened component by component (cap-std), so symlinks never lead outside, even mid-request; regular files up to 128 KiB (one agent message), UTF-8 text. The servers service only asks for paths the template lists; the agent checks containment on its own, so a compromised panel still cannot reach other files.
 - **Requests and replies:** the panel sends `readFile` / `writeFile` with a `requestId`; the agent answers with one `fileResult` carrying the same id and the content (read; `null` if the file does not exist yet) or an error. The gateway waits up to 10 s. New message types, so the protocol version stays 1 (ADR 0002); older agents ignore them and the panel reports a timeout.
 - Changes apply when the server starts the next time; the panel says so while it runs.
 - Game rules (PvP since 1.21.9) are changed with `/gamerule` in the console.

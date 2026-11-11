@@ -15,7 +15,7 @@ Groups of friends meet on Discord. Starting or waking a server, or checking whet
   - `/start <server>` starts or wakes a server, `/stop <server>` stops it (visible to the channel, so friends see who did it). Server names autocomplete.
 - **Who may do what:** the caller's Discord account must be linked to a Harrier account (ADR 0008); the role then decides with the same rules as the panel (`viewServers`, `startStopServers`, ADR 0007). Unlinked users are told to link their account in the panel.
 - **Notifications** go to one channel, `HARRIER_DISCORD_CHANNEL_ID`: a server came online (from `starting` to `running`) or crashed for good (no restart pending, ADR 0010). The service follows `agents.event` itself and only reports changes it saw happen, so agent reconnects do not repeat messages.
-- **Language:** replies follow the caller's Discord language (German or English), notifications the server's preferred language (`preferred_locale`).
+- **Language:** replies follow the caller's Discord language (German or English). Notifications use the language of whoever used a command last: Discord only lets community servers choose a preferred language (`preferred_locale`, otherwise always `en-US`), which is the fallback before anyone used a command.
 - No database: the service is stateless; it asks identity and servers over NATS.
 
 ## Alternatives

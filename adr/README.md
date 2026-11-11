@@ -13,3 +13,4 @@ New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 | [0006](0006-users-login-and-sessions.md) | Users, login and sessions | Accepted |
 | [0007](0007-roles-and-invitations.md) | Roles and invitations | Accepted |
 | [0008](0008-discord-login.md) | Discord login | Accepted |
+| [0009](0009-stats-players-and-history.md) | Live stats, players and history | Accepted |

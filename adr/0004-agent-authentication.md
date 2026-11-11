@@ -15,6 +15,7 @@ Agents control Docker on the machines they run on. Until now, any process that c
 - **Transport:** the agent sends the token in the `Authorization: Bearer …` header of the WebSocket upgrade request, never in the URL (URLs end up in logs). The gateway asks the servers service via NATS (`nodes.authenticate`) **before** it completes the upgrade. An invalid token gets `401` and no WebSocket at all.
 - **Identity comes from the token, not from the agent.** The connection's ID is the node ID. `hostname`, `os` and `arch` from `hello` are informational only.
 - **One connection per node.** A new connection with the same token replaces the old one (close code `4002`).
+- **The token never travels unencrypted over a network.** The agent requires `wss://`, except for the own machine (`ws://localhost`). For a home network without HTTPS there is an explicit `--insecure` opt-in that warns on every start.
 - **The agent reads the token from `HARRIER_AGENT_TOKEN`**, not from a command-line argument (arguments are visible to other users via `ps`). A rejected token stops the agent (exit code 2), like a protocol rejection.
 - Revoking a node deletes it; its token stops working at the next connection attempt. Rotation comes with the panel UI (M2).
 

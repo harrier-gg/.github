@@ -10,3 +10,4 @@ New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 | [0003](0003-internationalization.md) | Internationalization | Accepted |
 | [0004](0004-agent-authentication.md) | Agent authentication | Accepted |
 | [0005](0005-games-variants-and-providers.md) | Games, variants and providers | Accepted |
+| [0006](0006-users-login-and-sessions.md) | Users, login and sessions | Accepted |

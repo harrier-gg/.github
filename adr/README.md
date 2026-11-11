@@ -16,3 +16,4 @@ New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 | [0009](0009-stats-players-and-history.md) | Live stats, players and history | Accepted |
 | [0010](0010-crash-restart.md) | Restarting crashed servers | Accepted |
 | [0011](0011-config-files.md) | Editing config files | Accepted |
+| [0012](0012-version-providers.md) | Version providers | Accepted |

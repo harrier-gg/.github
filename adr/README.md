@@ -9,3 +9,4 @@ New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 | [0002](0002-agent-protocol-versioning.md) | Agent protocol versioning | Accepted |
 | [0003](0003-internationalization.md) | Internationalization | Accepted |
 | [0004](0004-agent-authentication.md) | Agent authentication | Accepted |
+| [0005](0005-games-variants-and-providers.md) | Games, variants and providers | Accepted |

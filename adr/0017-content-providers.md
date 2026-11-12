@@ -17,15 +17,14 @@ Players want mods and plugins on their servers. Every game has its own sources: 
       path: mods
       sources:
         - { provider: modrinth, type: mod, loader: fabric }
-        - { provider: curseforge, game: 432, class: 6, loader: 4 }
   ```
 
-  A Paper template lists `plugin` with Modrinth (`loader: paper`), Hangar and CurseForge (Bukkit plugins); a Hytale template would list CurseForge with Hytale's game ID. The game version filter is the server's own version (ADR 0012).
+  A Paper template lists `plugin` with Modrinth (`loader: paper`) and Hangar. The game version filter is the server's own version (ADR 0012).
 - **One provider interface** in the servers service: search (query, kind's filters, game version), list a project's versions for the server, and resolve a version to **artifacts** (URL, file name, size, hashes) plus its dependencies (required, optional, incompatible) and, where known, its side (server, client, both). Adapters translate this to each API.
 - **Installing:** the panel resolves required dependencies from the same source, skips what is installed already, and asks the agent to download each artifact into the kind's directory. **The agent downloads** (HTTPS only), checks size and hash (SHA-512 or SHA-1) and moves the file into place only if they match; nothing is proxied through the panel.
 - **Installed content is tracked** by the servers service: source, project, version, file, hash, side and kind, so the panel can list it, remove it (file and record), check for updates and later share the player-side content (`.mrpack`, ADR 0005). Files added through the file manager are not tracked.
-- **Sources that need keys stay hidden until configured**: CurseForge requires `HARRIER_CURSEFORGE_API_KEY`. Files whose authors disallow third-party downloads (CurseForge `downloadUrl` is null) are shown with a link to download them manually and upload them with the file manager.
-- **Order:** Modrinth first (no key, Minecraft), then CurseForge (Minecraft, Hytale and others), then Hangar. Sources that do not deliver files over HTTPS, like the Steam Workshop, need their own install step on the agent and come with the first Steam game.
+- **Only sources that work without a key.** CurseForge (amended 2026-11-12): its API needs a key that CurseForge gives only on application, so the owner of every installation would have to apply for one. Harrier does not offer it; Hytale mods and other CurseForge-only content are uploaded with the file manager until an open source exists. Sources whose files may lack a download URL show a link to download manually instead.
+- **Order:** Modrinth first (Minecraft), then Hangar (Paper plugins), then Thunderstore. Sources that do not deliver files over HTTPS, like the Steam Workshop, need their own install step on the agent and come with the first Steam game.
 
 ## Alternatives
 

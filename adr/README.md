@@ -24,3 +24,4 @@ New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 | [0017](0017-content-providers.md) | Content providers (mods, plugins) | Accepted |
 | [0018](0018-sharing-player-content.md) | Sharing player content | Accepted |
 | [0019](0019-integration-settings.md) | Integration settings | Accepted |
+| [0020](0020-modpack-servers.md) | Modpack servers | Accepted |

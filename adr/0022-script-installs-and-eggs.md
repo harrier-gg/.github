@@ -40,7 +40,9 @@ the container.
 - **Stopping:** `lifecycle.stop` is a signal (`SIGINT`, `SIGTERM`) or a console command.
 - **Players:** `players: { protocol: a2s, port: <port name> }`, the Steam server query.
 - **Settings:** config types `boolean` and `secret` (passwords). A secret is not shown in the panel
-  and not returned to members, but stored like other settings.
+  and not returned to members, but stored like other settings. A secret with an empty default gets
+  a random value per server when it is created; the importer never takes over an egg's default
+  password, since it is public.
 
 ## Consequences
 

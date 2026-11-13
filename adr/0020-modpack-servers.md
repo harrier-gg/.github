@@ -35,5 +35,6 @@ CurseForge packs are out: its API needs a key that is only given on application.
   client-only mods off the server.
 - Mods of a pack cannot be updated or removed one by one in the panel, and the panel does not
   offer the pack to players (they install the same pack from Modrinth in their launcher).
-- Packs are chosen by name or link; a search in the panel can come later on the same field type.
+- Packs are found with a search in the panel (`GET /templates/modpacks`, Modrinth packs for the
+  chosen Minecraft version, without packs only for players) or named by link.
 - Other games can use `modpack` fields once a provider for their packs exists.

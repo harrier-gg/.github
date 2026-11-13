@@ -25,3 +25,5 @@ New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 | [0018](0018-sharing-player-content.md) | Sharing player content | Accepted |
 | [0019](0019-integration-settings.md) | Integration settings | Accepted |
 | [0020](0020-modpack-servers.md) | Modpack servers | Accepted |
+| [0021](0021-template-repository.md) | Template repository | Accepted |
+| [0022](0022-script-installs-and-eggs.md) | Script installs and Pterodactyl eggs | Accepted |

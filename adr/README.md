@@ -27,3 +27,4 @@ New ADR: copy `template.md`, take the next number, status "Proposed", open a PR.
 | [0020](0020-modpack-servers.md) | Modpack servers | Accepted |
 | [0021](0021-template-repository.md) | Template repository | Accepted |
 | [0022](0022-script-installs-and-eggs.md) | Script installs and Pterodactyl eggs | Accepted |
+| [0023](0023-thunderstore.md) | Thunderstore | Accepted |

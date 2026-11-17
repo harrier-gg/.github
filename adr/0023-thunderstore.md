@@ -37,6 +37,15 @@ over 180 MB for Valheim. The new website uses `GET /api/cyberstorm/listing/{comm
 - **Side** comes from the package's categories: only "Server-side" → server, only "Client-side" →
   client, otherwise both. Uploaders pick categories freely, so the panel shows it as a hint and
   installs whatever the user picks.
+- **Package folders** (added after the first test on Linux): a package's top-level folders can
+  belong elsewhere; BepInEx loads patchers only from `BepInEx/patchers/`. A Thunderstore source
+  maps them in the template, e.g. `folders: { patchers: BepInEx/patchers }`, and the agent unpacks
+  `patchers/` into `BepInEx/patchers/<Namespace-Name>/` and the rest into the content folder, all
+  swapped in only after everything is unpacked. A route the new version has nothing for removes
+  its old folder. The installed row keeps these extra folders, so removing the mod removes them.
+  Older agents ignore the routes and keep everything in the content folder. `config/` stays in the
+  package folder for now: configs are files the mod writes and users edit, so copying defaults
+  over them needs its own decision.
 
 ## Consequences
 
